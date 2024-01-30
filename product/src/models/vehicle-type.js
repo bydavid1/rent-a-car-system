@@ -1,12 +1,13 @@
-const Sequelize = require('sequelize');
+const { DataTypes } = require('sequelize');
+const sequelize = require('../config/database').sequelize;
 
 const VehicleType = sequelize.define('vehicle_types', {
   id: {
-    type: Sequelize.INTEGER,
+    type: DataTypes.INTEGER,
     primaryKey: true,
     autoIncrement: true,
   },
-  name: Sequelize.STRING,
+  name: DataTypes.STRING,
 });
 
 module.exports = VehicleType;  

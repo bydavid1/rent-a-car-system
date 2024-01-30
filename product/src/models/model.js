@@ -1,13 +1,14 @@
-const Sequelize = require('sequelize');
+const { DataTypes } = require('sequelize');
+const sequelize = require('../config/database').sequelize;
 
 const Model = sequelize.define('model', {
   id: {
-    type: Sequelize.INTEGER,
+    type: DataTypes.INTEGER,
     primaryKey: true,
     autoIncrement: true,
   },
-  brandId: Sequelize.INTEGER,
-  name: Sequelize.STRING,
+  brandId: DataTypes.INTEGER,
+  name: DataTypes.STRING,
 });
 
 module.exports = Model;  

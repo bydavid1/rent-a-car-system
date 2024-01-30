@@ -1,17 +1,18 @@
-const Sequelize = require('sequelize');
+const { DataTypes } = require('sequelize');
+const sequelize = require('../config/database').sequelize;
 
 const Rental = sequelize.define('rentals', {
   id: {
-    type: Sequelize.INTEGER,
+    type: DataTypes.INTEGER,
     primaryKey: true,
     autoIncrement: true,
   },
-  name: Sequelize.STRING,
-  address: Sequelize.STRING,
-  phone: Sequelize.STRING,
-  email: Sequelize.STRING,
-  owner: Sequelize.STRING,
-  logo: Sequelize.STRING,
+  name: DataTypes.STRING,
+  address: DataTypes.STRING,
+  phone: DataTypes.STRING,
+  email: DataTypes.STRING,
+  owner: DataTypes.STRING,
+  logo: DataTypes.STRING,
 });
 
 module.exports = Rental;  

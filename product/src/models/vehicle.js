@@ -1,19 +1,20 @@
-const Sequelize = require('sequelize');
+const { DataTypes } = require('sequelize');
+const sequelize = require('../config/database').sequelize;
 
 const Vehicle = sequelize.define('vehicles', {
   id: {
-    type: Sequelize.INTEGER,
+    type: DataTypes.INTEGER,
     primaryKey: true,
     autoIncrement: true,
   },
-  modelId: Sequelize.INTEGER,
-  brandId: Sequelize.INTEGER,
-  vehicleTypeId: Sequelize.INTEGER,
-  rentalId: Sequelize.INTEGER,
-  plate: Sequelize.STRING,
-  price: Sequelize.INTEGER,
-  description: Sequelize.STRING,
-  isAvailable: Sequelize.BOOLEAN,
+  modelId: DataTypes.INTEGER,
+  brandId: DataTypes.INTEGER,
+  vehicleTypeId: DataTypes.INTEGER,
+  rentalId: DataTypes.INTEGER,
+  plate: DataTypes.STRING,
+  price: DataTypes.INTEGER,
+  description: DataTypes.STRING,
+  isAvailable: DataTypes.BOOLEAN,
 });
 
 module.exports = Vehicle;  
