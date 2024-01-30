@@ -1,6 +1,5 @@
 const express = require("express");
-const mongoose = require("mongoose");
-const config = require("./config");
+const Database = require("./config/database");
 const MessageBroker = require("./utils/messageBroker");
 const productsRouter = require("./routes/productRoutes");
 require("dotenv").config();
@@ -12,19 +11,11 @@ class App {
     this.setMiddlewares();
     this.setRoutes();
     this.setupMessageBroker();
+    this.setupDatabase();
   }
 
-  async connectDB() {
-    await mongoose.connect(config.mongoURI, {
-      useNewUrlParser: true,
-      useUnifiedTopology: true,
-    });
-    console.log("MongoDB connected");
-  }
-
-  async disconnectDB() {
-    await mongoose.disconnect();
-    console.log("MongoDB disconnected");
+  setupDatabase() {
+    new Database().connect();
   }
 
   setMiddlewares() {
