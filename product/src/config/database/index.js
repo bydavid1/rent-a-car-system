@@ -1,4 +1,4 @@
-const Sequelize = require('sequelize');
+const { Sequelize } = require('sequelize');
 
 class Database {
   constructor() {    
@@ -27,4 +27,4 @@ class Database {
   }
 }
 
-module.exports = Database;
+module.exports = new Database();
