@@ -1,4 +1,4 @@
-import Brand from "../models/brand";
+import { Brand } from "../models/brand";
 
 class BrandRepository {
   async create(brand: any) : Promise<any>
