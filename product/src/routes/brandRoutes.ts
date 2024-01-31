@@ -1,9 +1,9 @@
-const express = require('express');
-const isAuthenticated = require("../utils/isAuthenticated");
-const BrandController = require('../controllers/brandController');
+import express, { Router } from 'express';
+import isAuthenticated from '../utils/isAuthenticated';
+import BrandController from '../controllers/brandController';
 
-const router = express.Router();
-const brandController = new BrandController();
+const router: Router = express.Router();
+const brandController: BrandController = new BrandController();
 
 // GET all brands
 router.get('/', isAuthenticated, brandController.getBrands);
