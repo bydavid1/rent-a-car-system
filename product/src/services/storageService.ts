@@ -4,7 +4,7 @@ import path from 'path';
 class StorageService {
   private static storageFolder: string = path.join(__dirname, '../storage/uploads');
 
-  static saveFile(file: any, customDir: string | null): string {
+  static saveFile(file: any, customDir?: string): string {
     const filename = this.generateFilename(file.originalname);
     let filePath = path.join(this.storageFolder, filename);
     

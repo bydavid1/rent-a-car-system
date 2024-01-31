@@ -1,11 +1,14 @@
-const BrandService = require('../services/brandService');
+import { Request, Response } from 'express';
+import BrandService from '../services/brandService';
 
 class BrandController {
+  private brandService: BrandService;
+
   constructor() {
     this.brandService = new BrandService();
   }
-  
-  async getBrands(req, res) {
+
+  async getBrands(req: Request, res: Response): Promise<Response> {
     try {
       // Get all brands
       const brands = await this.brandService.getAllBrands();
@@ -18,16 +21,25 @@ class BrandController {
     }
   }
 
-  async createBrand(req, res) {
+  async createBrand(req: Request, res: Response): Promise<Response> {
     try {
       // Validate inputs
-      const { name, description } = req.body;
-      if (!name || !description) {
-        return res.status(400).json({ error: 'Name and description are required' });
+      const { name } = req.body;
+      const file = req.body.image; //TODO: Validate file
+
+      if (!file) {
+        return res.status(400).json({ error: 'Image is required' });
       }
 
+      if (!name) {
+        return res.status(400).json({ error: 'Name and description are required' });
+      }
+ 
+      const filename = this.brandService.saveBrandImage(file);
+
       // Create brand
-      const brand = await this.brandService.createBrand(name, description);
+      const brandData = { name, image: filename };
+      const brand = await this.brandService.createBrand(brandData);      
 
       // Return response
       return res.status(201).json(brand);
@@ -37,10 +49,10 @@ class BrandController {
     }
   }
 
-  async getBrand(req, res) {
+  async getBrand(req: Request, res: Response): Promise<Response> {
     try {
       // Get brand by ID
-      const brandId = req.params.id;
+      const brandId = parseInt(req.params.id);
       const brand = await this.brandService.getBrandById(brandId);
 
       // Return response
@@ -55,17 +67,18 @@ class BrandController {
     }
   }
 
-  async updateBrand(req, res) {
+  async updateBrand(req: Request, res: Response): Promise<Response> {
     try {
       // Validate inputs
-      const { name, description } = req.body;
-      if (!name || !description) {
+      const { name } = req.body;
+      if (!name) {
         return res.status(400).json({ error: 'Name and description are required' });
       }
 
       // Update brand
-      const brandId = req.params.id;
-      const brand = await this.brandService.updateBrand(brandId, name, description);
+      const brandId = parseInt(req.params.id);
+      const brandData = { name };
+      const brand = await this.brandService.updateBrand(brandId, brandData);
 
       // Return response
       if (brand) {
@@ -79,10 +92,10 @@ class BrandController {
     }
   }
 
-  async deleteBrand(req, res) {
+  async deleteBrand(req: Request, res: Response): Promise<Response> {
     try {
       // Delete brand
-      const brandId = req.params.id;
+      const brandId = parseInt(req.params.id);
       const brand = await this.brandService.deleteBrand(brandId);
 
       // Return response
@@ -98,4 +111,4 @@ class BrandController {
   }
 }
 
-module.exports = BrandController;
+export default BrandController;
