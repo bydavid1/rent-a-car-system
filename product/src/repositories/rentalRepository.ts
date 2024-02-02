@@ -1,6 +1,6 @@
 import { Rental } from '../models/rentals'; // Assuming you have a 'Rental' model defined
 
-export class RentalsRepository {
+export class RentalRepository {
   async create(rentalData: any): Promise<any> {
     const rental = await Rental.create(rentalData);
     return rental;
