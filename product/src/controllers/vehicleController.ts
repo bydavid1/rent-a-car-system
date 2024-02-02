@@ -11,7 +11,7 @@ export class VehicleController {
   }
 
 
-  async create(req: Request, res: Response) {
+  async createVehicle(req: Request, res: Response) {
     try {
       // Perform validations on the request body
       // ...
@@ -25,7 +25,7 @@ export class VehicleController {
     }
   }
 
-  async update(req: Request, res: Response) {
+  async updateVehicle(req: Request, res: Response) {
     try {
       // Perform validations on the request body
       // ...
@@ -45,7 +45,7 @@ export class VehicleController {
     }
   }
 
-  async delete(req: Request, res: Response) {
+  async deleteVehicle(req: Request, res: Response) {
     try {
       const vehicleId = parseInt(req.params.id);
       // Delete the vehicle
@@ -61,7 +61,7 @@ export class VehicleController {
     }
   }
 
-  async getById(req: Request, res: Response) {
+  async getVehicleById(req: Request, res: Response) {
     try {
       const vehicleId = parseInt(req.params.id);
 
@@ -78,7 +78,7 @@ export class VehicleController {
     }
   }
 
-  async getAll(req: Request, res: Response) {
+  async getAllVehicles(req: Request, res: Response) {
     try {
       // Get all vehicles
       const vehicles = await this.vehicleRepository.getAll();
@@ -89,3 +89,5 @@ export class VehicleController {
     }
   }
 }
+
+export default VehicleController;

@@ -58,3 +58,5 @@ export class RentalController {
     }
   }
 }
+
+export default RentalController;

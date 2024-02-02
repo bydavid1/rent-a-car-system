@@ -73,4 +73,4 @@ class ModelController {
   }
 }
 
-module.exports = ModelController;
+export default ModelController;
