@@ -14,7 +14,7 @@ class VehicleRepository {
     return vehicle;
   }
 
-  async findAll() : Promise<Vehicle[]>
+  async getAll() : Promise<Vehicle[]>
   {
     const vehicles = await Vehicle.findAll();
     return vehicles;
@@ -38,3 +38,5 @@ class VehicleRepository {
     }
   }
 }
+
+export default VehicleRepository;
