@@ -1,24 +1,14 @@
 import { Model, DataTypes } from 'sequelize';
 import { sequelize } from '../config/db';
 
-interface RentalAttributes {
-  id: number;
-  name: string;
-  address: string;
-  phone: string;
-  email: string;
-  owner: string;
-  logo: string;
-}
-
-class Rental extends Model<RentalAttributes> {
-  public id!: number;
-  public name!: string;
-  public address!: string;
-  public phone!: string;
-  public email!: string;
-  public owner!: string;
-  public logo!: string;
+class Rental extends Model {
+  declare id: number;
+  declare name: string;
+  declare address: string;
+  declare phone: string;
+  declare email: string;
+  declare owner: string;
+  declare logo: string;
 }
 
 Rental.init(
@@ -41,4 +31,4 @@ Rental.init(
   }
 );
 
-export { Rental, RentalAttributes };
+export default Rental;

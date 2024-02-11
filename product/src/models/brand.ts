@@ -1,16 +1,10 @@
-import { Model, DataTypes } from 'sequelize';
+import { Model, CreationOptional, DataTypes } from 'sequelize';
 import { sequelize } from '../config/db';
 
-interface BrandAttributes {
-  id: number;
-  name: string;
-  logo: string;
-}
-
-class Brand extends Model<BrandAttributes> {
-  public id!: number;
-  public name!: string;
-  public logo!: string;
+class Brand extends Model {
+  declare id: CreationOptional<number>;
+  declare name: string;
+  declare logo: string;
 }
 
 Brand.init(
@@ -29,4 +23,4 @@ Brand.init(
   }
 );
 
-export { Brand, BrandAttributes };
+export default Brand;

@@ -1,14 +1,9 @@
 import { Model, DataTypes } from 'sequelize';
 import { sequelize } from '../config/database';
 
-interface VehicleTypeAttributes {
-  id: number;
-  name: string;
-}
-
-class VehicleType extends Model<VehicleTypeAttributes> {
-  public id!: number;
-  public name!: string;
+class VehicleType extends Model {
+  declare id: number;
+  declare name: string;
 }
 
 VehicleType.init(
@@ -26,4 +21,4 @@ VehicleType.init(
   }
 );
 
-export { VehicleType, VehicleTypeAttributes };
+export default VehicleType;

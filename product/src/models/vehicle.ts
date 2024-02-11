@@ -1,28 +1,16 @@
 import { Model, DataTypes } from 'sequelize';
 import { sequelize } from '../config/db';
 
-interface VehicleAttributes {
-  id: number;
-  modelId: number;
-  brandId: number;
-  vehicleTypeId: number;
-  rentalId: number;
-  plate: string;
-  price: number;
-  description: string;
-  isAvailable: boolean;
-}
-
-class Vehicle extends Model<VehicleAttributes> {
-  public id!: number;
-  public modelId!: number;
-  public brandId!: number;
-  public vehicleTypeId!: number;
-  public rentalId!: number;
-  public plate!: string;
-  public price!: number;
-  public description!: string;
-  public isAvailable!: boolean;
+class Vehicle extends Model {
+  declare id: number;
+  declare modelId: number;
+  declare brandId: number;
+  declare vehicleTypeId: number;
+  declare rentalId: number;
+  declare plate: string;
+  declare price: number;
+  declare description: string;
+  declare isAvailable: boolean;
 }
 
 Vehicle.init(
@@ -47,4 +35,4 @@ Vehicle.init(
   }
 );
 
-export { Vehicle, VehicleAttributes };
+export default Vehicle;

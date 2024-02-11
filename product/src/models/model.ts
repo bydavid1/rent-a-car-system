@@ -1,16 +1,10 @@
 import { Model as SequelizeModel, DataTypes } from 'sequelize';
 import { sequelize } from '../config/db';
 
-interface ModelAttributes {
-  id: number;
-  brandId: number;
-  name: string;
-}
-
-class Model extends SequelizeModel<ModelAttributes> {
-  public id!: number;
-  public brandId!: number;
-  public name!: string;
+class Model extends SequelizeModel {
+  declare id: number;
+  declare brandId: number;
+  declare name: string;
 }
 
 Model.init(
@@ -29,4 +23,4 @@ Model.init(
   }
 );
 
-export { Model, ModelAttributes };
+export default Model;

@@ -1,12 +1,10 @@
 import { Model, DataTypes } from 'sequelize';
 import { sequelize } from '../config/db';
 
-interface SpecificationAttributes {
-  id: number;
-  content: string;
+class Specification extends Model {
+  declare id: number;
+  declare content: string;
 }
-
-class Specification extends Model<SpecificationAttributes> {}
 
 Specification.init(
   {

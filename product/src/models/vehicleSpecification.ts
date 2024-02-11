@@ -1,13 +1,11 @@
 import { Model, DataTypes } from 'sequelize';
 import { sequelize } from '../config/db';
 
-interface VehicleSpecificationAttributes {
-  id: number;
-  vehicle_id: number;
-  specification_id: number;
+class VehicleSpecification extends Model {
+  declare id: number;
+  declare vehicle_id: number;
+  declare specification_id: number;
 }
-
-class VehicleSpecification extends Model<VehicleSpecificationAttributes> {}
 
 VehicleSpecification.init(
   {
