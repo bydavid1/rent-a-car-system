@@ -1,5 +1,5 @@
 import { Model, CreationOptional, DataTypes } from 'sequelize';
-import { sequelize } from '../config/db';
+import sequelize from '../sequelize';
 
 class Brand extends Model {
   declare id: CreationOptional<number>;

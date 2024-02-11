@@ -1,5 +1,5 @@
 import { Model as SequelizeModel, DataTypes } from 'sequelize';
-import { sequelize } from '../config/db';
+import sequelize from '../sequelize';
 
 class Model extends SequelizeModel {
   declare id: number;
